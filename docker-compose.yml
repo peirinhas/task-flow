@@ -3,7 +3,7 @@ version: '3.8'
 services:
   nginx:
     image: nginx:alpine
-    container_name: top_sport_nginx
+    container_name: task_flow_nginx
     ports:
       - "8080:80"
     volumes:
@@ -12,30 +12,30 @@ services:
     depends_on:
       - php
     networks:
-      - top_sport_network
+      - task_flow_network
 
   php:
     image: php:8.1-fpm
     build:
       context: ./docker
       dockerfile: Dockerfile
-    container_name: top_sport_app
+    container_name: task_flow_app
     volumes:
       - .:/var/www/html
     networks:
-      - top_sport_network
+      - task_flow_network
 
   db:
     image: mysql:8.0
-    container_name: top_sport_mysql
+    container_name: task_flow_mysql
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: core
     ports:
       - "3307:3306"
     networks:
-      - top_sport_network
+      - task_flow_network
 
 networks:
-  top_sport_network:
+  task_flow_network:
     driver: bridge
