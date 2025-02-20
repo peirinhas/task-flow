@@ -1,0 +1,14 @@
+<doctrine-mapping xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance"
+                  xmlns="https://doctrine-project.org/schemas/orm/doctrine-mapping"
+                  xsi:schemaLocation="https://doctrine-project.org/schemas/orm/doctrine-mapping
+                          https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+    <entity name="TaskFlow\Core\User\Domain\User" table="core_user">
+        <id name="id" type="uuid_db_type" column="id" length="16">
+            <generator strategy="NONE"/>
+        </id>
+        <embedded name="name" class="TaskFlow\Core\User\Domain\UserName" use-column-prefix="false" />
+        <embedded name="email" class="TaskFlow\Core\User\Domain\UserEmailAddress" use-column-prefix="false" />
+        <embedded name="password" class="TaskFlow\Core\User\Domain\UserPassword" use-column-prefix="false" />
+        <embedded name="createdAt" class="TaskFlow\Core\User\Domain\UserCreatedAt" use-column-prefix="false" />
+    </entity>
+</doctrine-mapping>

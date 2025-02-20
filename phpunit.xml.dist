@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--suppress XmlDefaultAttributeValue -->
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/9.5/phpunit.xsd"
+         backupGlobals="false"
+         backupStaticAttributes="false"
+         beStrictAboutOutputDuringTests="true"
+         beStrictAboutChangesToGlobalState="true"
+         beStrictAboutTestsThatDoNotTestAnything="false"
+         beStrictAboutTodoAnnotatedTests="true"
+         colors="true"
+         convertErrorsToExceptions="true"
+         convertNoticesToExceptions="true"
+         convertWarningsToExceptions="true"
+         executionOrder="random"
+         processIsolation="false"
+         stopOnError="true"
+         stopOnFailure="true"
+         stopOnIncomplete="false"
+         stopOnSkipped="false"
+         stopOnRisky="true"
+         verbose="true"
+         bootstrap="tests/bootstrap.php">
+
+    <php>
+        <ini name="error_reporting" value="-1"/>
+        <ini name="memory_limit" value="-1"/>
+        <server name="APP_ENV" value="test" force="true"/>
+        <server name="SHELL_VERBOSITY" value="-1"/>
+        <server name="SYMFONY_PHPUNIT_REMOVE" value=""/>
+        <server name="SYMFONY_PHPUNIT_VERSION" value="9.5"/>
+        <server name="KERNEL_CLASS" value="TaskFlow\Shared\Infrastructure\Symfony\Kernel"/>
+
+        <!-- Use the REST API key of your NewRelic Account on https://docs.newrelic.com/docs/apis/rest-api-v2/requirements/api-keys. Using an API key is optional. -->
+        <env name="NEWRELIC_API_KEY" value="FIXME"/>
+    </php>
+
+    <testsuites>
+        <testsuite name="Unit">
+            <directory suffix="Test.php">tests/Unit</directory>
+        </testsuite>
+    </testsuites>
+
+    <coverage>
+        <include>
+            <directory suffix=".php">./src/*/*/Application</directory>
+            <directory suffix=".php">./src/*/*/Domain</directory>
+            <directory suffix=".php">./src/*/*/Infrastructure/Service</directory>
+            <directory suffix=".php">./src/*/*/Infrastructure/Listener</directory>
+            <directory suffix="RequestHandler.php">./src/*/*/Infrastructure/Request/*/</directory>
+            <directory suffix="Mapper.php">./src/*/*/Infrastructure/Persistence/Redis</directory>
+            <directory suffix="Mapper.php">./src/*/*/Infrastructure/Persistence/Elasticsearch</directory>
+            <directory suffix=".php">./src/Shared</directory>
+        </include>
+        <exclude>
+            <directory>./src/Shared/Infrastructure/*/ConsoleCommand</directory>
+            <directory>./src/Shared/Infrastructure/Dev</directory>
+            <directory>./src/Shared/Infrastructure/Persistence/Fixtures</directory>
+            <directory>./src/Shared/Infrastructure/Symfony/DependencyInjection</directory>
+        </exclude>
+    </coverage>
+</phpunit>

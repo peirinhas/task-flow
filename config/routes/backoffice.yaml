@@ -1,0 +1,7 @@
+public_controllers:
+  resource: '../../app/Backoffice/Controller/'
+  type: annotation
+  prefix: /backoffice
+  name_prefix: 'backoffice.'
+  defaults:
+    _format: 'json'

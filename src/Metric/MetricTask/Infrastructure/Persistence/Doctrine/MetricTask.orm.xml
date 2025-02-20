@@ -1,0 +1,13 @@
+<doctrine-mapping xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance"
+                  xmlns="https://doctrine-project.org/schemas/orm/doctrine-mapping"
+                  xsi:schemaLocation="https://doctrine-project.org/schemas/orm/doctrine-mapping
+                          https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+    <entity name="TaskFlow\Metric\MetricTask\Domain\MetricTask" table="metric_task">
+        <id name="id" type="uuid_db_type" column="id" length="16">
+            <generator strategy="NONE"/>
+        </id>
+        <field name="creatorId" type="uuid_db_type" column="creator_id" length="16" use-column-prefix="false" />
+        <field name="status" column="status" type="string" length="30"  />
+        <field name="numUpdates" column="num_updates" type="integer"  />
+    </entity>
+</doctrine-mapping>

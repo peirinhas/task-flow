@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<psalm
+        cacheDirectory="./var"
+        xmlns="https://getpsalm.org/schema/config"
+        limitMethodComplexity="true"
+        errorLevel="1"
+        errorBaseline="psalm-baseline.xml"
+>
+    <projectFiles>
+        <directory name="app"/>
+        <directory name="src"/>
+        <directory name="tests"/>
+        <ignoreFiles>
+            <directory name="vendor"/>
+        </ignoreFiles>
+    </projectFiles>
+
+    <plugins>
+        <pluginClass class="Psalm\MockeryPlugin\Plugin"/>
+    </plugins>
+</psalm>

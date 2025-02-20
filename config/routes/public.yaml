@@ -1,0 +1,11 @@
+public_controllers:
+  resource: '../../app/Public/Controller/'
+  type: annotation
+  prefix: /public
+  name_prefix: 'public.'
+  defaults:
+    _format: 'json'
+
+api_login_check:
+  path: /public/api/login_check
+  methods: [POST]

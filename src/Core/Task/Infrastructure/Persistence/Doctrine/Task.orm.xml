@@ -1,0 +1,17 @@
+<doctrine-mapping xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance"
+                  xmlns="https://doctrine-project.org/schemas/orm/doctrine-mapping"
+                  xsi:schemaLocation="https://doctrine-project.org/schemas/orm/doctrine-mapping
+                          https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+    <entity name="TaskFlow\Core\Task\Domain\Task" table="core_task">
+        <id name="id" type="uuid_db_type" column="id" length="16">
+            <generator strategy="NONE"/>
+        </id>
+        <embedded name="title" class="TaskFlow\Core\Task\Domain\TaskTitle" use-column-prefix="false" />
+        <embedded name="description" class="TaskFlow\Core\Task\Domain\TaskDescription" use-column-prefix="false" />
+        <field name="creatorId" type="uuid_db_type" column="creator_id" length="16" use-column-prefix="false" />
+        <field name="priority" column="priority" type="task_priority_db_type" length="30"  />
+        <field name="status" column="status" type="task_status_db_type" length="30" />
+        <embedded name="createdAt" class="TaskFlow\Core\Task\Domain\TaskCreatedAt" use-column-prefix="false" />
+        <embedded name="updatedAt" class="TaskFlow\Core\Task\Domain\TaskUpdatedAt" use-column-prefix="false" />
+    </entity>
+</doctrine-mapping>

@@ -1,0 +1,90 @@
+# Create user
+POST http://localhost:8080/public/api/users/cd7c8ff8-0066-44a5-bd70-9fa7e25a08ef
+Content-Type: application/json
+
+{
+  "name": "user test",
+  "email":"test@test.com",
+  "password":"Password1"
+}
+
+###
+
+# Login
+POST http://localhost:8080/public/api/login_check
+Content-Type: application/json
+
+{
+  "email": "test@test.com",
+  "password": "Password1"
+}
+
+###
+
+# Definir la variable "token" con el valor del token JWT
+@token = eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE3NDAwNTI1MjcsImV4cCI6MTc0MDA1NjEyNywicm9sZXMiOlsiUk9MRV9VU0VSIl0sInVzZXJuYW1lIjoidGVzdEB0ZXN0LmNvbSJ9.Xz9IUuomgF6ROV0qa9ww0weeWlqqlVrOoIX1pXifmFKCnrMQgAPwR85NaTAdmqUHjomHeRlgYj2Lz_5hA30VHmZY-i-rQY0xeA5A9W6zZINcCttbBtFPoGyGo8srKSyDNf8M-2Hk0u_tZJFDDxqAvn-Lkj4zK2emLz5eHBlcsCxHnLPbTOul1dc4J_78VDSqKipb2aSo6MmaOY-G1fwkV3gtplOl6NbtzprhC43kmBOiOtAVxd2GHV3G_km-lQYBCcEDEq1JGZpjz7TRXOP6D_BAs04JBVcvTg4iqa2w7JKh9_oXmfK8dEQJuNs5ljJkHJ51Rl49MXgA0gJTZWifEg
+
+# Create a task
+POST http://localhost:8080/backoffice/api/tasks/433774ed-8062-4f18-a743-ec6df03b5e46
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "title": "Task home",
+ "description": "I need to go to the market"
+}
+
+###
+
+# Create other task
+POST http://localhost:8080/backoffice/api/tasks/433774ed-8062-4f18-a743-ec6df03b5e48
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "title": "call doctor",
+  "description": "I have to call the doctor",
+  "priority" : "high"
+}
+
+###
+
+# Change other task
+PUT http://localhost:8080/backoffice/api/tasks/433774ed-8062-4f18-a743-ec6df03b5e48
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "title": "call doctor",
+  "description": "I have to call the doctor",
+  "priority" : "critical"
+}
+
+###
+
+# Get a task
+GET http://localhost:8080/backoffice/api/tasks/433774ed-8062-4f18-a743-ec6df03b5e46
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+###
+
+# List tasks
+GET http://localhost:8080/backoffice/api/tasks
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+
+###
+
+# Remove a task
+DELETE http://localhost:8080/backoffice/api/tasks/433774ed-8062-4f18-a743-ec6df03b5e46
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+###
+
+# List metric tasks
+GET http://localhost:8080/backoffice/api/metric-tasks
+Content-Type: application/json
+Authorization: Bearer {{token}}
