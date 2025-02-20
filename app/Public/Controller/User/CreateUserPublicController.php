@@ -18,7 +18,7 @@ use TaskFlow\Shared\Domain\Uuid;
 use TaskFlow\Shared\Domain\ValueObject\UuidValueObject;
 use TaskFlow\Shared\Infrastructure\Symfony\Controller\ApiController;
 
-final class CreateUserAuthController extends ApiController
+final class CreateUserPublicController extends ApiController
 {
     #[Route(
         path: 'api/users/{id}',
