@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Tests\Unit\Metric\MetricTask\Application\UseCase\IncrementNumUpdates;
 
-use PHPUnit\Framework\Assert;
 use TaskFlow\Metric\MetricTask\Application\UseCase\IncrementNumUpdates\IncrementMetricTaskNumUpdates;
 use TaskFlow\Metric\MetricTask\Application\UseCase\IncrementNumUpdates\IncrementMetricTaskNumUpdatesHandler;
 use Tests\Double\Metric\MetricTask\Domain\MetricTaskMother;
