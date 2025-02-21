@@ -50,7 +50,7 @@ final class CreateMetricTaskHandlerTest extends MetricTaskMotherRepository
 
         $this->thenAdd($metricTask);
 
-        Assert::assertEquals($metricTask->numUpdates(), 0);
+        self::assertEquals($metricTask->numUpdates(), 0);
 
         $this->dispatch($command, $this->handler);
     }
