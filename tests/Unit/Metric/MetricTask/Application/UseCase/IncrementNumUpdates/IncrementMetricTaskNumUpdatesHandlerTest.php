@@ -51,7 +51,7 @@ final class IncrementMetricTaskNumUpdatesHandlerTest extends MetricTaskMotherRep
 
         $this->thenSave($metricTaskAfter);
 
-        Assert::assertEquals($metricTaskAfter->numUpdates(), $metricTask->numUpdates() + 1);
+        self::assertEquals($metricTaskAfter->numUpdates(), $metricTask->numUpdates() + 1);
 
         $this->dispatch($command, $this->handler);
     }
