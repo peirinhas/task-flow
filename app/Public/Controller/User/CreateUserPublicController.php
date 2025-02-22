@@ -17,6 +17,7 @@ use TaskFlow\Core\User\Domain\UserPassword;
 use TaskFlow\Shared\Domain\Uuid;
 use TaskFlow\Shared\Domain\ValueObject\UuidValueObject;
 use TaskFlow\Shared\Infrastructure\Symfony\Controller\ApiController;
+use Symfony\Component\PasswordHasher\Exception\InvalidPasswordException;
 
 final class CreateUserPublicController extends ApiController
 {
@@ -47,6 +48,7 @@ final class CreateUserPublicController extends ApiController
         return [
             UserEmailAlreadyExists::class => Response::HTTP_CONFLICT,
             UserAlreadyExists::class => Response::HTTP_CONFLICT,
+            InvalidPasswordException::class => Response::HTTP_CONFLICT,
         ];
     }
 }
