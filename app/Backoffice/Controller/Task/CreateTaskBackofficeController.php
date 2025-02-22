@@ -17,6 +17,7 @@ use TaskFlow\Core\Task\Domain\TaskTitle;
 use TaskFlow\Shared\Domain\Uuid;
 use TaskFlow\Shared\Domain\ValueObject\UuidValueObject;
 use TaskFlow\Shared\Infrastructure\Symfony\Controller\ApiController;
+use TaskFlow\Shared\Infrastructure\Symfony\Service\Exception\RequestUnexpectedException;
 
 final class CreateTaskBackofficeController extends ApiController
 {
@@ -49,6 +50,7 @@ final class CreateTaskBackofficeController extends ApiController
     {
         return [
             TaskAlreadyExists::class => Response::HTTP_CONFLICT,
+            RequestUnexpectedException::class => Response::HTTP_UNPROCESSABLE_ENTITY,
         ];
     }
 }
