@@ -23,7 +23,7 @@ final class RemoveTaskBackofficeController extends ApiController
         requirements: ['id' => UuidValueObject::EMBEDDED_PATTERN],
         methods: ['DELETE']
     )]
-    public function __invoke(string $id, Request $request): JsonResponse
+    public function __invoke(string $id): JsonResponse
     {
         $this->dispatch(
             new RemoveTaskOrFail(
