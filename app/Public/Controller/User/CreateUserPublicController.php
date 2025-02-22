@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Public\Controller\User;
 
-use Sesame\Shared\Domain\Exception\UnexpectedEmailAddress;
+use TaskFlow\Shared\Domain\Exception\UnexpectedEmailAddress;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
