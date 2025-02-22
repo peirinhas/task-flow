@@ -19,6 +19,7 @@ use TaskFlow\Shared\Domain\Exception\UnexpectedEmailAddress;
 use TaskFlow\Shared\Domain\Uuid;
 use TaskFlow\Shared\Domain\ValueObject\UuidValueObject;
 use TaskFlow\Shared\Infrastructure\Symfony\Controller\ApiController;
+use TaskFlow\Shared\Infrastructure\Symfony\Service\Exception\RequestUnexpectedException;
 
 final class CreateUserPublicController extends ApiController
 {
@@ -51,6 +52,7 @@ final class CreateUserPublicController extends ApiController
             UserAlreadyExists::class => Response::HTTP_CONFLICT,
             UnexpectedEmailAddress::class => Response::HTTP_UNPROCESSABLE_ENTITY,
             UserPasswordInvalidFormat::class => Response::HTTP_UNPROCESSABLE_ENTITY,
+            RequestUnexpectedException::class => Response::HTTP_UNPROCESSABLE_ENTITY,
         ];
     }
 }
