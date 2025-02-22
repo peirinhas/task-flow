@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Public\Controller\User;
 
+use Sesame\Shared\Domain\Exception\UnexpectedEmailAddress;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -48,7 +49,8 @@ final class CreateUserPublicController extends ApiController
         return [
             UserEmailAlreadyExists::class => Response::HTTP_CONFLICT,
             UserAlreadyExists::class => Response::HTTP_CONFLICT,
-            InvalidPasswordException::class => Response::HTTP_CONFLICT,
+            InvalidPasswordException::class => Response::HTTP_UNPROCESSABLE_ENTITY,
+            UnexpectedEmailAddress::class => Response::HTTP_UNPROCESSABLE_ENTITY,
         ];
     }
 }
