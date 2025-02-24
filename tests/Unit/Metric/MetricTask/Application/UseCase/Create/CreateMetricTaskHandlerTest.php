@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Tests\Unit\Metric\MetricTask\Application\UseCase\Create;
 
-use PHPUnit\Framework\Assert;
 use TaskFlow\Metric\MetricTask\Application\UseCase\Create\CreateMetricTask;
 use TaskFlow\Metric\MetricTask\Application\UseCase\Create\CreateMetricTaskHandler;
 use Tests\Double\Core\Task\Domain\TaskStatusMother;
@@ -50,7 +49,7 @@ final class CreateMetricTaskHandlerTest extends MetricTaskMotherRepository
 
         $this->thenAdd($metricTask);
 
-        Assert::assertEquals($metricTask->numUpdates(), 0);
+        self::assertEquals($metricTask->numUpdates(), 0);
 
         $this->dispatch($command, $this->handler);
     }
