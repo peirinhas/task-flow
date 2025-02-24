@@ -18,6 +18,7 @@ use TaskFlow\Core\Task\Domain\TaskTitle;
 use TaskFlow\Shared\Domain\Uuid;
 use TaskFlow\Shared\Domain\ValueObject\UuidValueObject;
 use TaskFlow\Shared\Infrastructure\Symfony\Controller\ApiController;
+use TaskFlow\Shared\Infrastructure\Symfony\Service\Exception\RequestUnexpectedException;
 
 final class UpdateTaskBackofficeController extends ApiController
 {
@@ -50,6 +51,7 @@ final class UpdateTaskBackofficeController extends ApiController
         return [
             TaskNotFound::class => Response::HTTP_NOT_FOUND,
             TaskOwnershipException::class => Response::HTTP_FORBIDDEN,
+            RequestUnexpectedException::class => Response::HTTP_UNPROCESSABLE_ENTITY,
         ];
     }
 }

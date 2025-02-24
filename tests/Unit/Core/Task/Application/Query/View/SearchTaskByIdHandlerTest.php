@@ -9,7 +9,6 @@ use TaskFlow\Core\Task\Application\Query\View\SearchTaskByIdHandler;
 use TaskFlow\Core\Task\Application\Query\View\TaskViewAssembler;
 use TaskFlow\Core\Task\Domain\Exception\TaskOwnershipException;
 use TaskFlow\Core\Task\Domain\Service\EnsureTaskOwnership;
-use TaskFlow\Shared\Domain\Uuid;
 use Tests\Double\Core\Task\Application\View\TaskViewMother;
 use Tests\Double\Core\Task\Domain\TaskMother;
 use Tests\Double\Core\Task\Domain\TaskMotherRepository;
@@ -34,7 +33,7 @@ final class SearchTaskByIdHandlerTest extends TaskMotherRepository
     {
         $query = $this->randomQuery();
 
-        $this->givenNotFoundById(Uuid::create($query->id));
+        $this->givenNotFoundById(UuidMother::create($query->id));
 
         $this->assertAskResponse(null, $query, $this->queryHandler);
     }
