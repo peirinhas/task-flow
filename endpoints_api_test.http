@@ -1,5 +1,7 @@
 # Create user
-POST http://localhost:8080/public/api/users/cd7c8ff8-0066-44a5-bd70-9fa7e25a08ef
+@userId= cd7c8ff8-0066-44a5-bd70-9fa7e25a08ef
+
+POST http://localhost:8080/public/api/users/{{userId}}
 Content-Type: application/json
 
 {
@@ -18,14 +20,17 @@ Content-Type: application/json
   "email": "test@test.com",
   "password": "Password1"
 }
+> {%
+    client.global.set("token", response.body.token);
+%}
+
 
 ###
 
-# Add token return endpoint login_check
-@token = eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE3NDAzODk5NzIsImV4cCI6MTc0MDM5MzU3Miwicm9sZXMiOlsiUk9MRV9VU0VSIl0sInVzZXJuYW1lIjoidGVzdEB0ZXN0LmNvbSJ9.Aa6yJat02-YbJfol0kWKsn9ggmxCH1W1INcfqhreH3Aokfb5QKv5NqYiILZAx3HJobWF3Mdyr2DeMvCOcpVMaob53WE5hGvLRgraZUdau2W_wqhXrPaMVS-gHdvzFJ3xKwRlin1QhXBraQ4VzIQdeNBwzNAl7vcKvphZj-IQtIrfYpi_miOVseR_0FwvvruvL3OwYDyZBYxjGdECFQWHyzXXS_sB5fIJsaDE35TyZHgqfCq1vo08JReiqmrvdlmUAFfO-JyoTsx5w8FFxutIesN_ZKM7f0UIW50bMr_Y7CrmAe0-wXzlE7TzZ6EMzDbLZBeVFPMRuBOipyTMU0h6vA
+@firstTaskId = 433774ed-8062-4f18-a743-ec6df03b5e46
 
 # Create a task
-POST http://localhost:8080/backoffice/api/tasks/433774ed-8062-4f18-a743-ec6df03b5e46
+POST http://localhost:8080/backoffice/api/tasks/{{firstTaskId}}
 Content-Type: application/json
 Authorization: Bearer {{token}}
 
@@ -36,8 +41,10 @@ Authorization: Bearer {{token}}
 
 ###
 
+@secondTaskId = 433774ed-8062-4f18-a743-ec6df03b5e48
+
 # Create other task
-POST http://localhost:8080/backoffice/api/tasks/433774ed-8062-4f18-a743-ec6df03b5e48
+POST http://localhost:8080/backoffice/api/tasks/{{secondTaskId}}
 Content-Type: application/json
 Authorization: Bearer {{token}}
 
@@ -49,8 +56,8 @@ Authorization: Bearer {{token}}
 
 ###
 
-# Change other task
-PUT http://localhost:8080/backoffice/api/tasks/433774ed-8062-4f18-a743-ec6df03b5e48
+# Change second task
+PUT http://localhost:8080/backoffice/api/tasks/{{secondTaskId}}
 Content-Type: application/json
 Authorization: Bearer {{token}}
 
@@ -62,8 +69,8 @@ Authorization: Bearer {{token}}
 
 ###
 
-# Get a task
-GET http://localhost:8080/backoffice/api/tasks/433774ed-8062-4f18-a743-ec6df03b5e46
+# Get second task
+GET http://localhost:8080/backoffice/api/tasks/{{secondTaskId}}
 Content-Type: application/json
 Authorization: Bearer {{token}}
 
@@ -74,17 +81,22 @@ GET http://localhost:8080/backoffice/api/tasks
 Content-Type: application/json
 Authorization: Bearer {{token}}
 
-
 ###
-
-# Remove a task
-DELETE http://localhost:8080/backoffice/api/tasks/433774ed-8062-4f18-a743-ec6df03b5e46
+# List metric tasks
+GET http://localhost:8080/backoffice/api/metric-tasks
 Content-Type: application/json
 Authorization: Bearer {{token}}
 
 ###
 
-# List metric tasks
+# Remove first task
+DELETE http://localhost:8080/backoffice/api/tasks/{{firstTaskId}}
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+###
+
+# List metric tasks after remove first task
 GET http://localhost:8080/backoffice/api/metric-tasks
 Content-Type: application/json
 Authorization: Bearer {{token}}

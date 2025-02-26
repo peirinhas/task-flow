@@ -8,6 +8,8 @@ interface MetricTaskRepository
 {
     public function add(MetricTask $metricTask): void;
 
+    public function remove(MetricTask $metricTask): void;
+
     public function save(MetricTask $metricTask): void;
 
     public function searchById(string $id): ?MetricTask;

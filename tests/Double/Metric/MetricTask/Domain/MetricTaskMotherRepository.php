@@ -28,6 +28,21 @@ abstract class MetricTaskMotherRepository extends UnitTestCase
             ->shouldNotReceive('add');
     }
 
+    protected function thenRemove(MetricTask $metricTask): void
+    {
+        $this->repository()
+            ->shouldReceive('remove')
+            ->with($this->similarTo($metricTask))
+            ->once()
+            ->andReturnNull();
+    }
+
+    public function thenNotRemove(): void
+    {
+        $this->repository()
+            ->shouldNotReceive('remove');
+    }
+
     protected function thenSave(MetricTask $metricTask): void
     {
         $this->repository()

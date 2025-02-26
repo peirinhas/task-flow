@@ -15,6 +15,11 @@ final class MetricTaskDoctrineRepository extends DoctrineRepository implements M
         $this->persistAggregateRoot($metricTask);
     }
 
+    public function remove(MetricTask $metricTask): void
+    {
+        $this->removeAggregateRoot($metricTask);
+    }
+
     public function save(MetricTask $metricTask): void
     {
         $this->persistAggregateRoot($metricTask);
